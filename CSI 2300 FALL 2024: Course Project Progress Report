@@ -1,0 +1,131 @@
+
+public class Game {
+
+private String[][] gameBoard 
+/* two dimensional array to make 3x3 game board*/
+private String currentPlayerSym
+
+//method that set the game up and starts new ones
+public startGame(){
+    board = new String[3][3]// 3 x 3 board
+    clearPriorGame();
+    currentPlayerSym = “X”
+
+  }//end of start game
+
+//method to clear out the board
+public void clearPriorGame(){
+	for (int row = 0; row < 3; row++) {
+     	for (int column = 0; column < 3; column++) {
+                board[row][column] = "";//set to null
+            }
+        }
+
+}//end of clear
+
+//check if move is valid then sets the current player’s //symbol if it is
+public boolean placeMarker(int row, int col){
+    if(row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col].equals(“”)){
+    board[row][col] = currentPlayerSym;
+    	Return true;
+    }
+return false;
+
+  }//end marker
+
+
+//this method will have to check all row, columns and diagonals
+Public boolean checkScore(){
+
+    for (int i = 0; i < 3; i++){
+    
+    //check rows
+    if(board[i][0].equals(currentPlayerSym) && board[i][1].equals(currentPlayerSym) && board[i][2].equals(currentPlayerSym)){
+      return true;
+    
+    	}
+    
+    //check columns
+    if(board[0][i].equals(currentPlayerSym) && board[1][i].equals(currentPlayerSym) && board[2][i].equals(currentPlayerSym)){
+      return true;
+    
+    }
+    
+    //check the diagonals
+    if(board[0][0].equals(currentPlayerSym) && board[1][1].equals(currentPlayerSym) && board[2][2].equals(currentPlayerSym)){
+      return true;
+    
+    }
+    
+    if(board[0][2].equals(currentPlayerSym) && board[1][1].equals(currentPlayerSym) && board[2][0].equals(currentPlayerSym)){
+      return true;
+    
+    }
+
+}//end check
+
+
+
+//method to change to the next player
+public void nextPlayer(){
+
+    	if(currentPlayerSym.equals(“X”){
+    		currentPlayerSym = “O”;
+    
+    } else {
+    	currentPlayerSym = “X”;
+    
+    }
+
+}//end next
+
+
+
+//accessor methods
+public String getCurrentPlayerSym(){
+	return currentPlayerSym;
+
+}
+
+public String[][] getBoard(){
+	return board;
+
+}
+
+}//end of Game class
+
+
+
+
+
+
+
+
+//this class will make the computers moves, because we don't know how to use AI to make logical decisions we will make the computer’s moves random
+
+import java.util.Random;
+
+Public class Computer {
+
+Private Game game;
+//constructor that assigns game instance
+public Computer(Game game){
+
+  this.game = game;
+
+}
+
+Public void Move(){
+    	Random rand = new Random(); //random obj
+    
+    //do while loop to insure a valid move is made
+    Do {
+    	int row = rand.nextInt(3)
+    	int col = rand.nextInt(3)
+    
+    }
+    while(!game.Move(row,col))// while move is not successfully made
+  
+  }//end move
+
+}//end computer

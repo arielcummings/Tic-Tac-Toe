@@ -29,4 +29,4 @@ Installation and Setup
 Future Enhancements
 - Create a more visually appealing GUI.
 - Introduce difficulty levels for the computer opponent.
-- Implement multiplayer functionality to allow two players to compete, in addition to playing against Com.
+- Implement multiplayer functionality to allow two players to compete, in addition to playing against the Computer.

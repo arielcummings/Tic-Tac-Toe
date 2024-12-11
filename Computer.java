@@ -183,9 +183,17 @@ public class Computer {
             if ((turn == false) && ((board[2][0].equals("X") && (board[0][1].equals("X") || board[1][2].equals("X"))))){
                 if (game.placeMarker(0,2)){turn = true;}
             }
+            //same case different corner
             if ((turn == false) && ((board[0][0].equals("X") && (board[2][1].equals("X") || board[1][2].equals("X"))))){
                 if (game.placeMarker(2,2)){turn = true;}
             }
+
+            //saves a start where you put two behind and already blocked lane
+            if ((turn == false) && ((board[2][2].equals("X") && board[1][1].equals("X")))){
+                if (game.placeMarker(0,2)){turn = true;}
+            }
+  
+
                        
             //plays a diagonal filler move since there are no game winning or blocking moves available
             if (turn == false){

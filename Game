@@ -1,0 +1,102 @@
+package com.example.gameapp;
+
+public class Game {
+
+    private String[][] board;//2D array
+    private String currentPlayerSym;
+
+    //method that set the game up and starts new ones
+    public void startGame(){
+        board = new String[3][3];// 3 x 3 board
+        clearPriorGame();
+        currentPlayerSym ="X";
+
+    }//end of start game
+
+    //method to clear out the board
+    public void clearPriorGame(){
+        for (int row = 0; row < 3; row++) {
+            for (int column = 0; column < 3; column++) {
+                board[row][column] = "";//set to null
+            }
+        }
+
+    }//end of clear
+
+    //check if move is valid then sets the current player’s //symbol if it is
+    public boolean placeMarker(int row, int col){
+        if(row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col].equals("")){
+            board[row][col] = currentPlayerSym;
+            return true;
+        }
+        return false;
+
+    }//end marker
+
+
+    //this method will have to check all row, columns and diagonals
+    public boolean checkScore() {
+
+        for (int i = 0; i < 3; i++) {
+
+            //check rows
+            if (board[i][0].equals(currentPlayerSym) && board[i][1].equals(currentPlayerSym) && board[i][2].equals(currentPlayerSym)) {
+                return true;
+
+            }
+
+            //check columns
+            if (board[0][i].equals(currentPlayerSym) && board[1][i].equals(currentPlayerSym) && board[2][i].equals(currentPlayerSym)) {
+                return true;
+
+            }
+
+            //check the diagonals
+            if (board[0][0].equals(currentPlayerSym) && board[1][1].equals(currentPlayerSym) && board[2][2].equals(currentPlayerSym)) {
+                return true;
+
+            }
+
+            if (board[0][2].equals(currentPlayerSym) && board[1][1].equals(currentPlayerSym) && board[2][0].equals(currentPlayerSym)) {
+                return true;
+
+            }
+
+        }//end for
+
+        return false;
+    }//end check
+
+
+
+    //method to change to the next player
+    public void nextPlayer(){
+
+        if(currentPlayerSym.equals("X")){
+            currentPlayerSym = "O";
+
+        } else {
+            currentPlayerSym = "X";
+
+        }
+
+    }//end next
+
+
+
+    //accessor methods
+    public String getCurrentPlayerSym(){
+        return currentPlayerSym;
+
+    }
+
+    public String[][] getBoard(){
+        return board;
+
+    }
+
+}//end of Game class
+
+
+
+
